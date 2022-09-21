@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Umbraco.Community.AdminOnlyProperty</RootNamespace>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>Our.Umbraco.Community.AdminOnlyProperty</PackageId>
+    <Title>Admin Only Property for Umbraco</Title>
+    <Version>1.0.0</Version>
+    <Authors>lottepitcher</Authors>
+    <Product>Umbraco.Community.AdminOnlyProperty</Product>
+    <Description>Admin Only Property for Umbraco</Description>
+    <Copyright>2022 © Lotte Pitcher</Copyright>
+    <PackageProjectUrl>https://github.com/LottePitcher/umbraco-admin-only-property</PackageProjectUrl>
+    <PackageIcon>shield-icon.png</PackageIcon>
+    <PackageTags>umbraco;umbraco-marketplace</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/LottePitcher/umbraco-admin-only-property</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\docs\assets\img\shield-icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Umbraco.Cms.Core" Version="10.2.0" />
+  </ItemGroup>
+
+</Project>

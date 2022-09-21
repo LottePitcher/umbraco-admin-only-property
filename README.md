@@ -1,12 +1,14 @@
 # Admin Only Property for Umbraco
 
+![GitHub](https://img.shields.io/github/license/lottepitcher/umbraco-admin-only-property)
+
 This adds a new data type 'wrapper' to the Umbraco backoffice that allows you to hide a document type property from any user that is not in the Administrators group.
 
 ## Installation
 
 Add the package to an existing Umbraco website (v.10.2 or later) from nuget:
 
-`dotnet add package Umbraco.Community.AdminOnlyProperty`
+`dotnet add package Our.Umbraco.Community.AdminOnlyProperty`
 
 ## Configuration
 
