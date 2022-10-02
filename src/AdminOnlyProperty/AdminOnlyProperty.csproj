@@ -14,20 +14,20 @@
     <Description>Admin Only Property for Umbraco</Description>
     <Copyright>2022 © Lotte Pitcher</Copyright>
     <PackageProjectUrl>https://github.com/LottePitcher/umbraco-admin-only-property</PackageProjectUrl>
-    <PackageIcon>shield-icon.png</PackageIcon>
+    <PackageIcon>logo-128x.png</PackageIcon>
     <PackageTags>umbraco;umbraco-marketplace</PackageTags>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageReadmeFile>README-nuget.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/LottePitcher/umbraco-admin-only-property</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\docs\assets\img\shield-icon.png">
+    <None Include="..\..\docs\assets\img\logo-128x.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-    <None Include="..\..\README.md">
+    <None Include="..\..\docs\README-nuget.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
