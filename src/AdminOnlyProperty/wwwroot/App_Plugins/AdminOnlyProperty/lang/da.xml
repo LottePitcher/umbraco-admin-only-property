@@ -3,6 +3,6 @@
     <area alias="adminOnlyProperty">
         <key alias="packageName">Admin Kun Ejendom</key>
         <key alias="labelDataType">Datatype</key>
-        <key alias="descriptionDataType">Datatypen, der skal ombrydes.</key>
+        <key alias="descriptionDataType">Datatypen der skal skjules.</key>
     </area>
 </language>
