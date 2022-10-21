@@ -78,7 +78,7 @@ namespace Umbraco.Community.AdminOnlyProperty
             };
         }
 
-        public IDataValueEditor GetValueEditor(object configuration)
+        public IDataValueEditor GetValueEditor(object? configuration)
         {
             if (configuration is Dictionary<string, object> config &&
                 config.TryGetValue("dataType", out var obj1) == true &&
