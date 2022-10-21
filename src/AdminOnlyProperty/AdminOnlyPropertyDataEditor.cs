@@ -46,7 +46,7 @@ namespace Umbraco.Community.AdminOnlyProperty
 
         public EditorType Type => EditorType.PropertyValue;
 
-        public string Name => _localizedTextService.Localize("adminOnlyProperty", "packageName") ?? DataEditorName;
+        public string Name => DataEditorName;
 
         public string Icon => DataEditorIcon;
 

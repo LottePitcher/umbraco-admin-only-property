@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <language alias="da" intName="Danish" localName="Dansk" lcid="" culture="da-DK">
     <area alias="adminOnlyProperty">
-        <key alias="packageName">Admin Only Property</key>
         <key alias="labelDataType">Datatype</key>
         <key alias="descriptionDataType">Datatypen der skal skjules.</key>
     </area>
