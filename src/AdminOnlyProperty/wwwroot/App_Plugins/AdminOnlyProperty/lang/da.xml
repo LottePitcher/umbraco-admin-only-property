@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<language alias="da" intName="Danish" localName="Dansk" lcid="" culture="da-DK">
+    <area alias="adminOnlyProperty">
+        <key alias="packageName">Admin Kun Ejendom</key>
+        <key alias="labelDataType">Datatype</key>
+        <key alias="descriptionDataType">Datatypen, der skal ombrydes.</key>
+    </area>
+</language>

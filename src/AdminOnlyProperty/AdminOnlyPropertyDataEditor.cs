@@ -1,9 +1,10 @@
-﻿using Umbraco.Cms.Core.IO;
+using Umbraco.Cms.Core.IO;
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Cms.Core.Serialization;
 using Umbraco.Cms.Core.Services;
 using Umbraco.Cms.Core.Strings;
+using Umbraco.Extensions;
 using UmbConstants = Umbraco.Cms.Core.Constants;
 
 namespace Umbraco.Community.AdminOnlyProperty
@@ -45,7 +46,7 @@ namespace Umbraco.Community.AdminOnlyProperty
 
         public EditorType Type => EditorType.PropertyValue;
 
-        public string Name => DataEditorName;
+        public string Name => _localizedTextService.Localize("adminOnlyProperty", "packageName") ?? DataEditorName;
 
         public string Icon => DataEditorIcon;
 
@@ -62,6 +63,7 @@ namespace Umbraco.Community.AdminOnlyProperty
             return new AdminOnlyPropertyConfigurationEditor(
                 _dataTypeService,
                 _ioHelper,
+                _localizedTextService,
                 _userService,
                 _propertyEditors);
         }

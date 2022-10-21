@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<language alias="en" intName="English (UK)" localName="English (UK)" lcid="" culture="en-GB">
+    <area alias="adminOnlyProperty">
+        <key alias="packageName">Admin Only Property</key>
+        <key alias="labelDataType">Data type</key>
+        <key alias="descriptionDataType">The data type to wrap.</key>
+    </area>
+</language>
