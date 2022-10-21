@@ -1,4 +1,5 @@
-﻿using Umbraco.Cms.Core.Events;
+using Newtonsoft.Json.Linq;
+using Umbraco.Cms.Core.Events;
 using Umbraco.Cms.Core.Notifications;
 using Umbraco.Cms.Core.Security;
 using Umbraco.Extensions;
@@ -29,12 +30,16 @@ namespace Umbraco.Community.AdminOnlyProperty
                             var cacheKey = $"__aopConfig";
                             if (prop?.PropertyEditor?.Alias.InvariantEquals(AdminOnlyPropertyDataEditor.DataEditorAlias) == true &&
                                 prop?.ConfigNullable.TryGetValue(cacheKey, out var tmp1) == true &&
-                                tmp1 is Dictionary<string, object> config
-                                )
+                                tmp1 is Dictionary<string, object> config &&
+                                config.TryGetValue("userGroups", out var tmp2) == true &&
+                                tmp2 is JArray array1 &&
+                                array1.Count > 0)
                             {
                                 prop.ConfigNullable.Remove(cacheKey);
 
-                                return user.IsAdmin();
+                                var allowedGroups = array1.ToObject<string[]>();
+
+                                return user.Groups.Any(x => allowedGroups?.Contains(x.Alias) == true);
                             }
 
                             return true;

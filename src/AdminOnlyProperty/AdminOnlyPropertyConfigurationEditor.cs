@@ -23,6 +23,28 @@ namespace Umbraco.Community.AdminOnlyProperty
             _dataTypeService = dataTypeService;
             _propertyEditors = propertyEditors;
 
+            var groups = userService
+               .GetAllUserGroups()
+               .Select(x => new
+               {
+                   label = x.Name,
+                   value = x.Alias,
+               });
+
+            _ = DefaultConfiguration.TryAdd("userGroups", new[] { "admin" });
+
+            Fields.Add(new ConfigurationField
+            {
+                Key = "userGroups",
+                Name = "User groups",
+                Description = "Select as many user groups as you like!",
+                View = "checkboxlist",
+                Config = new Dictionary<string, object>
+                {
+                    { "prevalues", groups },
+                }
+            });
+
             Fields.Add(new ConfigurationField
             {
                 Key = "dataType",
