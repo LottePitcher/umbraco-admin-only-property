@@ -1,6 +1,7 @@
-﻿using Umbraco.Cms.Core.IO;
+using Umbraco.Cms.Core.IO;
 using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Cms.Core.Services;
+using Umbraco.Extensions;
 using UmbConstants = Umbraco.Cms.Core.Constants;
 
 namespace Umbraco.Community.AdminOnlyProperty
@@ -13,6 +14,7 @@ namespace Umbraco.Community.AdminOnlyProperty
         public AdminOnlyPropertyConfigurationEditor(
             IDataTypeService dataTypeService,
             IIOHelper ioHelper,
+            ILocalizedTextService localizedTextService,
             IUserService userService,
             PropertyEditorCollection propertyEditors)
             : base()
@@ -23,8 +25,8 @@ namespace Umbraco.Community.AdminOnlyProperty
             Fields.Add(new ConfigurationField
             {
                 Key = "dataType",
-                Name = "Data type",
-                Description = "The data type to wrap.",
+                Name = localizedTextService.Localize("adminOnlyProperty", "labelDataType") ?? "Data type",
+                Description = localizedTextService.Localize("adminOnlyProperty", "descriptionDataType") ?? "The data type to wrap.",
                 View = "treepicker",
                 Config = new Dictionary<string, object>
                 {
