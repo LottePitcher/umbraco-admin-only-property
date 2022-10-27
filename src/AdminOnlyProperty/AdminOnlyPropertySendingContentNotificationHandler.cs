@@ -17,35 +17,36 @@ namespace Umbraco.Community.AdminOnlyProperty
 
         public void Handle(SendingContentNotification notification)
         {
-            var user = _backOfficeSecurityAccessor.BackOfficeSecurity.CurrentUser;
-
-            foreach (var variant in notification.Content.Variants)
+            var user = _backOfficeSecurityAccessor?.BackOfficeSecurity?.CurrentUser;
+            if (user != null)
             {
-                foreach (var tab in variant.Tabs)
+                foreach (var variant in notification.Content.Variants)
                 {
-                    tab.Properties = tab.Properties.Where(prop =>
+                    foreach (var tab in variant.Tabs)
                     {
-                        var cacheKey = $"__aopConfig";
-                        if (prop.PropertyEditor.Alias.InvariantEquals(AdminOnlyPropertyDataEditor.DataEditorAlias) == true &&
-                            prop.Config.TryGetValue(cacheKey, out var tmp1) == true &&
-                            tmp1 is Dictionary<string, object> config 
-                            )
+                        tab.Properties = tab?.Properties?.Where(prop =>
                         {
-                            prop.Config.Remove(cacheKey);
+                            var cacheKey = $"__aopConfig";
+                            if (prop?.PropertyEditor?.Alias.InvariantEquals(AdminOnlyPropertyDataEditor.DataEditorAlias) == true &&
+                                prop?.ConfigNullable.TryGetValue(cacheKey, out var tmp1) == true &&
+                                tmp1 is Dictionary<string, object> config
+                                )
+                            {
+                                prop.ConfigNullable.Remove(cacheKey);
 
-                            return user.IsAdmin();
+                                return user.IsAdmin();
+                            }
+
+                            return true;
+
+                        }).ToList();
+
+                        if (tab?.Properties?.Any() == false)
+                        {
+                            tab.Type = string.Empty;
                         }
-
-                        return true;
-
-                    }).ToList();
-
-                    if (tab.Properties.Any() == false)
-                    {
-                        tab.Type = string.Empty;
                     }
                 }
-
             }
         }
     }

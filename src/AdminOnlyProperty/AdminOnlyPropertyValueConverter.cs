@@ -22,13 +22,13 @@ namespace Umbraco.Community.AdminOnlyProperty
         public override bool IsConverter(IPublishedPropertyType propertyType)
             => propertyType.EditorAlias.InvariantEquals(AdminOnlyPropertyDataEditor.DataEditorAlias) == true;
 
-        public override object ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object inter, bool preview)
+        public override object? ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview)
             => GetInnerPropertyType(propertyType).ConvertInterToObject(owner, referenceCacheLevel, inter, preview);
 
-        public override object ConvertIntermediateToXPath(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object inter, bool preview)
+        public override object? ConvertIntermediateToXPath(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview)
             => GetInnerPropertyType(propertyType).ConvertInterToXPath(owner, referenceCacheLevel, inter, preview);
 
-        public override object ConvertSourceToIntermediate(IPublishedElement owner, IPublishedPropertyType propertyType, object source, bool preview)
+        public override object? ConvertSourceToIntermediate(IPublishedElement owner, IPublishedPropertyType propertyType, object? source, bool preview)
             => GetInnerPropertyType(propertyType).ConvertSourceToInter(owner, source, preview);
 
         public override PropertyCacheLevel GetPropertyCacheLevel(IPublishedPropertyType propertyType)
@@ -39,7 +39,8 @@ namespace Umbraco.Community.AdminOnlyProperty
 
         private IPublishedPropertyType GetInnerPropertyType(IPublishedPropertyType propertyType)
         {
-            if (propertyType.DataType.Configuration is Dictionary<string, object> config &&
+            if (propertyType.ContentType != null &&
+                propertyType.DataType.Configuration is Dictionary<string, object> config &&
                 config?.TryGetValue("dataType", out var tmp1) == true &&
                 tmp1 is string str1 &&
                 int.TryParse(str1, out var dataTypeId) == true &&
