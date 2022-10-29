@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<language alias="fr" intName="French" localName="Français" lcid="" culture="fr">
+    <area alias="adminOnlyProperty">
+        <key alias="labelDataType">Type de donnée</key>
+        <key alias="descriptionDataType">Le type de donnée à encapsuler.</key>
+    </area>
+</language>
