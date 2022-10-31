@@ -31,7 +31,7 @@ namespace Umbraco.Community.AdminOnlyProperty
                             if (prop?.PropertyEditor?.Alias.InvariantEquals(AdminOnlyPropertyDataEditor.DataEditorAlias) == true &&
                                 prop?.ConfigNullable.TryGetValue(cacheKey, out var tmp1) == true &&
                                 tmp1 is Dictionary<string, object> config &&
-                                config.TryGetValue("userGroups", out var tmp2) == true &&
+                                config.TryGetValue(AdminOnlyPropertyConfigurationEditor.UserGroups, out var tmp2) == true &&
                                 tmp2 is JArray array1 &&
                                 array1.Count > 0)
                             {
