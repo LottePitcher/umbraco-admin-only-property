@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Linq;
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.IO;
 using Umbraco.Cms.Core.PropertyEditors;
@@ -74,7 +75,7 @@ namespace Umbraco.Community.AdminOnlyProperty
             {
                 if (config.ContainsKey(UserGroups) == false)
                 {
-                    config.Add(UserGroups, DefaultUserGroups);
+                    config.Add(UserGroups, JArray.FromObject(DefaultUserGroups));
                 }
 
                 var dataType = _dataTypeService.GetDataType(id);
