@@ -12,6 +12,9 @@ namespace Umbraco.Community.AdminOnlyProperty
         private readonly IDataTypeService _dataTypeService;
         private readonly PropertyEditorCollection _propertyEditors;
 
+        internal readonly string[] DefaultUserGroups = new[] { "admin" };
+        internal const string UserGroups = "userGroups";
+
         public AdminOnlyPropertyConfigurationEditor(
             IDataTypeService dataTypeService,
             IIOHelper ioHelper,
@@ -22,6 +25,28 @@ namespace Umbraco.Community.AdminOnlyProperty
         {
             _dataTypeService = dataTypeService;
             _propertyEditors = propertyEditors;
+
+            var groups = userService
+               .GetAllUserGroups()
+               .Select(x => new
+               {
+                   label = x.Name,
+                   value = x.Alias,
+               });
+
+            _ = DefaultConfiguration.TryAdd(UserGroups, DefaultUserGroups);
+
+            Fields.Add(new ConfigurationField
+            {
+                Key = UserGroups,
+                Name = "User groups",
+                Description = "Select as many user groups as you like!",
+                View = "checkboxlist",
+                Config = new Dictionary<string, object>
+                {
+                    { "prevalues", groups },
+                }
+            });
 
             Fields.Add(new ConfigurationField
             {
@@ -47,6 +72,11 @@ namespace Umbraco.Community.AdminOnlyProperty
                 obj1 is string str1 &&
                 int.TryParse(str1, out var id) == true)
             {
+                if (config.ContainsKey(UserGroups) == false)
+                {
+                    config.Add(UserGroups, DefaultUserGroups);
+                }
+
                 var dataType = _dataTypeService.GetDataType(id);
                 if (dataType != null && _propertyEditors.TryGet(dataType.EditorAlias, out var dataEditor) == true)
                 {
