@@ -1,4 +1,5 @@
-﻿using Umbraco.Cms.Core.Models;
+using Umbraco.Cms.Core;
+using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Cms.Core.Services;
@@ -41,16 +42,28 @@ namespace Umbraco.Community.AdminOnlyProperty
         {
             if (propertyType.ContentType != null &&
                 propertyType.DataType.Configuration is Dictionary<string, object> config &&
-                config?.TryGetValue("dataType", out var tmp1) == true &&
-                tmp1 is string str1 &&
-                int.TryParse(str1, out var dataTypeId) == true &&
-                _dataTypeService.GetDataType(dataTypeId) is IDataType dataType)
+                config?.TryGetValue(AdminOnlyPropertyConfigurationEditor.DataTypeKey, out var tmp1) == true &&
+                tmp1 is string str1)
             {
-                return _publishedContentTypeFactory.CreatePropertyType(
-                    propertyType.ContentType,
-                    propertyType.Alias,
-                    dataType.Id,
-                    ContentVariation.Nothing);
+                var dataType = default(IDataType);
+
+                if (int.TryParse(str1, out var id) == true)
+                {
+                    dataType = _dataTypeService.GetDataType(id);
+                }
+                else if (UdiParser.TryParse<GuidUdi>(str1, out var udi) == true)
+                {
+                    dataType = _dataTypeService.GetDataType(udi.Guid);
+                }
+
+                if (dataType?.EditorAlias.InvariantEquals(AdminOnlyPropertyDataEditor.DataEditorAlias) == false)
+                {
+                    return _publishedContentTypeFactory.CreatePropertyType(
+                        propertyType.ContentType,
+                        propertyType.Alias,
+                        dataType.Id,
+                        ContentVariation.Nothing);
+                }
             }
 
             throw new InvalidOperationException($"Data type not configured for the property: {propertyType.DataType.Id}");

@@ -1,10 +1,10 @@
+using Umbraco.Cms.Core;
 using Umbraco.Cms.Core.IO;
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Cms.Core.Serialization;
 using Umbraco.Cms.Core.Services;
 using Umbraco.Cms.Core.Strings;
-using Umbraco.Extensions;
 using UmbConstants = Umbraco.Cms.Core.Constants;
 
 namespace Umbraco.Community.AdminOnlyProperty
@@ -83,11 +83,20 @@ namespace Umbraco.Community.AdminOnlyProperty
         public IDataValueEditor GetValueEditor(object? configuration)
         {
             if (configuration is Dictionary<string, object> config &&
-                config.TryGetValue("dataType", out var obj1) == true &&
-                obj1 is string str1 &&
-                int.TryParse(str1, out var id) == true)
+                config.TryGetValue(AdminOnlyPropertyConfigurationEditor.DataTypeKey, out var obj1) == true &&
+                obj1 is string str1)
             {
-                var dataType = _dataTypeService.GetDataType(id);
+                var dataType = default(IDataType);
+
+                if (int.TryParse(str1, out var id) == true)
+                {
+                    dataType = _dataTypeService.GetDataType(id);
+                }
+                else if (UdiParser.TryParse<GuidUdi>(str1, out var udi) == true)
+                {
+                    dataType = _dataTypeService.GetDataType(udi.Guid);
+                }
+
                 if (dataType != null && _propertyEditors.TryGet(dataType.EditorAlias, out var dataEditor) == true)
                 {
                     return dataEditor.GetValueEditor(dataType.Configuration);

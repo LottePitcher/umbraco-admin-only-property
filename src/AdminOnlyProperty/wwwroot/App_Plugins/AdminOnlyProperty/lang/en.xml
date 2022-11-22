@@ -3,5 +3,7 @@
     <area alias="adminOnlyProperty">
         <key alias="labelDataType">Data type</key>
         <key alias="descriptionDataType">The data type to wrap.</key>
+        <key alias="labelUserGroups">User groups</key>
+        <key alias="descriptionUserGroups">Select as many user groups as you like!</key>
     </area>
 </language>
