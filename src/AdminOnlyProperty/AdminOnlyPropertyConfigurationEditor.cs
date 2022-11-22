@@ -17,6 +17,7 @@ namespace Umbraco.Community.AdminOnlyProperty
         internal readonly string[] _defaultUserGroups = new[] { "admin" };
         internal const string UserGroupsKey = "userGroups";
         internal const string DataTypeKey = "dataType";
+        internal const string IndicatorKey = "indicator";
 
         public AdminOnlyPropertyConfigurationEditor(
             IDataTypeService dataTypeService,
@@ -55,7 +56,7 @@ namespace Umbraco.Community.AdminOnlyProperty
             {
                 Key = DataTypeKey,
                 Name = localizedTextService.Localize("adminOnlyProperty", "labelDataType") ?? "Data type",
-                Description = localizedTextService.Localize("adminOnlyProperty", "descriptionDataType") ?? "The data type to wrap.",
+                Description = localizedTextService.Localize("adminOnlyProperty", "descriptionDataType") ?? "The data type to wrap",
                 View = "treepicker",
                 Config = new Dictionary<string, object>
                 {
@@ -65,6 +66,14 @@ namespace Umbraco.Community.AdminOnlyProperty
                     {"treeAlias", UmbConstants.Trees.DataTypes},
                     {"idType", "id"}
                 }
+            });
+
+            Fields.Add(new ConfigurationField
+            {
+                Key = IndicatorKey,
+                Name = localizedTextService.Localize("adminOnlyProperty", "labelIndicator") ?? "Show indicator?",
+                Description = localizedTextService.Localize("adminOnlyProperty", "descriptionIndicator") ?? "Add '🔓' to the label to indicate the property is restricted to some users",
+                View = "boolean"
             });
         }
 

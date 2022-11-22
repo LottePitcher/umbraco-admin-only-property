@@ -2,6 +2,6 @@
 <language alias="fr" intName="French" localName="Français" lcid="" culture="fr">
     <area alias="adminOnlyProperty">
         <key alias="labelDataType">Type de donnée</key>
-        <key alias="descriptionDataType">Le type de donnée à encapsuler.</key>
+        <key alias="descriptionDataType">Le type de donnée à encapsuler</key>
     </area>
 </language>

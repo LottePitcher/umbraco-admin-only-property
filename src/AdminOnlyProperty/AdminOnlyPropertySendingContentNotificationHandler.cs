@@ -39,7 +39,18 @@ namespace Umbraco.Community.AdminOnlyProperty
 
                                 var allowedGroups = array1.ToObject<string[]>();
 
-                                return user.Groups.Any(x => allowedGroups?.Contains(x.Alias) == true);
+                                var allowed = user.Groups.Any(x => allowedGroups?.Contains(x.Alias) == true);
+                                if (allowed)
+                                {
+                                    // data type might be configured to show the indicator on the label
+                                    // option is a checkbox/toggle so will be set to '1' if the indicator should be shown
+                                    if (config.TryGetValue(AdminOnlyPropertyConfigurationEditor.IndicatorKey, out var tmp3) == true &&
+                                        tmp3.ToString() == "1")
+                                    {
+                                        prop.Label = "🔓 " + prop.Label;
+                                    }
+                                }
+                                return allowed;
                             }
 
                             return true;

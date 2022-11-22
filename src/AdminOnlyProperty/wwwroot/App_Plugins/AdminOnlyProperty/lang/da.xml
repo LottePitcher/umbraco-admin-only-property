@@ -2,6 +2,6 @@
 <language alias="da" intName="Danish" localName="Dansk" lcid="" culture="da-DK">
     <area alias="adminOnlyProperty">
         <key alias="labelDataType">Datatype</key>
-        <key alias="descriptionDataType">Datatypen der skal skjules.</key>
+        <key alias="descriptionDataType">Datatypen der skal skjules</key>
     </area>
 </language>

@@ -2,8 +2,10 @@
 <language alias="en" intName="English (UK)" localName="English (UK)" lcid="" culture="en-GB">
     <area alias="adminOnlyProperty">
         <key alias="labelDataType">Data type</key>
-        <key alias="descriptionDataType">The data type to wrap.</key>
+        <key alias="descriptionDataType">The data type to wrap</key>
         <key alias="labelUserGroups">User groups</key>
         <key alias="descriptionUserGroups">Select as many user groups as you like!</key>
+        <key alias="labelIndicator">Show indicator?</key>
+        <key alias="descriptionIndicator">Add '🔓' to the label to indicate the property is restricted to some users</key>
     </area>
 </language>
