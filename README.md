@@ -16,15 +16,15 @@ Add the package to an existing Umbraco website (v10.2 or later) from Nuget:
 
 After installing the package, add a new data type using the 'Admin Only Property' property editor.
 
-Select which user group(s) to restrict the property to (default is 'Administrators'), and which underlying data type to use.
+Select which user group(s) can see the property (default is 'Administrators'), and which underlying data type to use.
 
-In the following example a textarea property will only be visible to (and therefore only editable by) Administrators. Unauthorised content editors will see no indication of the existence of the property.
+In the following example a textstring property will only be visible to (and therefore only editable by) Administrators. Unauthorised content editors will have no idea that the property exists.
 
 <img width="750" alt="Data type config" src="https://github.com/LottePitcher/umbraco-admin-only-property/blob/develop/docs/screenshots/data-type-config.png">
 
 If you would like authorised content editors to see an indicator that the property is hidden from some users then tick 'Show indicator?'. When this is ticked an unlocked padlock emoji will be displayed alongside the label, for example:
 
-<img width="750" alt="Document type indicator" src="https://github.com/LottePitcher/umbraco-admin-only-property/blob/develop/docs/screenshots/doc-type-indicator.png">
+<img width="750" alt="Document type indicator" src="https://github.com/LottePitcher/umbraco-admin-only-property/blob/develop/docs/screenshots/indicator-textstring.png">
 
 ## Acknowledgements
 

@@ -11,11 +11,11 @@
     "Screenshots": [
       {
         "ImageUrl": "https://github.com/LottePitcher/umbraco-admin-only-property/raw/develop/docs/screenshots/data-type-config.png",
-        "Caption": "Configuring an Admin Only Property data type"
+        "Caption": "Configuring an 'Admin Only Property' data type in the backoffice"
       },
       {
-        "ImageUrl": "https://github.com/LottePitcher/umbraco-admin-only-property/raw/develop/docs/screenshots/doc-type-indicator.png",
-        "Caption": "Optional indicator that property is restricted for some users"
+        "ImageUrl": "https://github.com/LottePitcher/umbraco-admin-only-property/raw/develop/docs/screenshots/indicator-textarea.png",
+        "Caption": "Optional indicator confirming that the textarea property is hidden from some users"
       }
     ],
     "Tags": [

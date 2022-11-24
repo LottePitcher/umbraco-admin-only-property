@@ -12,7 +12,7 @@
     <Version>1.1.0</Version>
     <Authors>lottepitcher</Authors>
     <Product>Umbraco.Community.AdminOnlyProperty</Product>
-    <Description>Restrict document type properties by user group(s)</Description>
+    <Description>Restrict a property on a document type by user group(s). If the editor is unauthorised the property will not be shown.</Description>
     <Copyright>2022 © Lotte Pitcher</Copyright>
     <PackageProjectUrl>https://github.com/LottePitcher/umbraco-admin-only-property</PackageProjectUrl>
     <PackageIcon>logo.png</PackageIcon>
