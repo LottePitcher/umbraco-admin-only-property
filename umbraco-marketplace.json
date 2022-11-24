@@ -10,11 +10,11 @@
     "PackageType": "Package",
     "Screenshots": [
       {
-        "ImageUrl": "https://github.com/LottePitcher/umbraco-admin-only-property/blob/develop/docs/screenshots/data-type-config.png",
+        "ImageUrl": "https://github.com/LottePitcher/umbraco-admin-only-property/raw/develop/docs/screenshots/data-type-config.png",
         "Caption": "Configuring an Admin Only Property data type"
       },
       {
-        "ImageUrl": "https://github.com/LottePitcher/umbraco-admin-only-property/blob/develop/docs/screenshots/doc-type-indicator.png",
+        "ImageUrl": "https://github.com/LottePitcher/umbraco-admin-only-property/raw/develop/docs/screenshots/doc-type-indicator.png",
         "Caption": "Optional indicator that property is restricted for some users"
       }
     ],
