@@ -1,0 +1,16 @@
+{
+   "AuthorDetails": {
+      "Description": "6 x Umbraco MVP and member of the Umbraco Community Package team.",
+      "Url": "https://lotte.dev",
+      "ImageUrl": "https://github.com/lottepitcher.png"
+    },
+    "Category": "Editor Tools",
+    "IssueTrackerUrl": "https://github.com/LottePitcher/umbraco-admin-only-property/issues",
+    "LicenseTypes": [ "Free" ],
+    "PackageType": "Package",
+    "Tags": [
+      "backoffice",
+      "property-editor"
+    ],
+    "Title": "Admin Only Property Editor"
+  }
