@@ -1,5 +1,6 @@
 {
-   "AuthorDetails": {
+  "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
+  "AuthorDetails": {
       "Description": "6 x Umbraco MVP and member of the Umbraco Community Package team.",
       "Url": "https://lotte.dev",
       "ImageUrl": "https://github.com/lottepitcher.png"
@@ -20,7 +21,7 @@
     ],
     "Tags": [
       "backoffice",
-      "property-editor"
+      "property editor"
     ],
     "Title": "Admin Only Property Editor"
   }
