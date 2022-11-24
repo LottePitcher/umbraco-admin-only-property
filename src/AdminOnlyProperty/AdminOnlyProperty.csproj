@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -9,13 +9,13 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>Our.Umbraco.Community.AdminOnlyProperty</PackageId>
     <Title>Admin Only Property for Umbraco</Title>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
     <Authors>lottepitcher</Authors>
     <Product>Umbraco.Community.AdminOnlyProperty</Product>
-    <Description>Admin Only Property for Umbraco</Description>
+    <Description>Restrict document type properties by user group(s)</Description>
     <Copyright>2022 © Lotte Pitcher</Copyright>
     <PackageProjectUrl>https://github.com/LottePitcher/umbraco-admin-only-property</PackageProjectUrl>
-    <PackageIcon>logo-128x.png</PackageIcon>
+    <PackageIcon>logo.png</PackageIcon>
     <PackageTags>umbraco;umbraco-marketplace</PackageTags>
     <PackageReadmeFile>README-nuget.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/LottePitcher/umbraco-admin-only-property</RepositoryUrl>
@@ -24,7 +24,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\docs\assets\img\logo-128x.png">
+    <None Include="..\..\docs\assets\img\logo.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>

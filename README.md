@@ -1,9 +1,10 @@
 # Admin Only Property for Umbraco
 
-[![GitHub license](https://img.shields.io/github/license/lottepitcher/umbraco-admin-only-property)](LICENSE)
-[![NuGet](https://img.shields.io/nuget/vpre/Our.Umbraco.Community.AdminOnlyProperty.svg)](https://www.nuget.org/packages/Our.Umbraco.Community.AdminOnlyProperty)
+[![Downloads](https://img.shields.io/nuget/dt/Our.Umbraco.Community.AdminOnlyProperty?color=cc9900)](https://www.nuget.org/packages/Our.Umbraco.Community.AdminOnlyProperty/)
+[![NuGet](https://img.shields.io/nuget/vpre/Our.Umbraco.Community.AdminOnlyProperty?color=0273B3)](https://www.nuget.org/packages/Our.Umbraco.Community.AdminOnlyProperty)
+[![GitHub license](https://img.shields.io/github/license/lottepitcher/umbraco-admin-only-property?color=8AB803)](LICENSE)
 
-This package adds a new data type 'wrapper' to the Umbraco backoffice that allows you to hide a document type property from any user that is not in the Administrators group.
+This package adds a new data type 'wrapper' to the Umbraco backoffice that allows you to hide a document type property from any user that is not in the specified user group(s).
 
 ## Installation
 
@@ -15,11 +16,15 @@ Add the package to an existing Umbraco website (v10.2 or later) from Nuget:
 
 After installing the package, add a new data type using the 'Admin Only Property' property editor.
 
-Then specify which the underlying data type to use. This is an example of a textarea: 
+Select which user group(s) to restrict the property to (default is 'Administrators'), and which underlying data type to use.
 
-<img width="689" alt="image" src="https://user-images.githubusercontent.com/4716542/191495770-705798bc-14d7-4c33-9e79-80cbee22d2ce.png">
+In the following example a textarea property will only be visible to (and therefore only editable by) Administrators. Unauthorised content editors will see no indication of the existence of the property.
 
-The property will only be visible (and therefore editable by) Administrators only.
+<img width="750" alt="Data type config" src="https://github.com/LottePitcher/umbraco-admin-only-property/blob/develop/docs/screenshots/data-type-config.png">
+
+If you would like authorised content editors to see an indicator that the property is hidden from some users then tick 'Show indicator?'. When this is ticked an unlocked padlock emoji will be displayed alongside the label:
+
+<img width="750" alt="Document type indicator" src="https://github.com/LottePitcher/umbraco-admin-only-property/blob/develop/docs/screenshots/doc-type-indicator.png">
 
 ## Acknowledgements
 
