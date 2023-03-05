@@ -1,0 +1,21 @@
+---
+name: Bug report
+about: Report a problem you've discovered with this package
+labels: bug
+---
+
+<!-- 
+Please fill in a brief description of the issue here.
+-->
+
+## Versions
+
+- Umbraco version: 
+- AdminOnlyProperty version: 
+
+## Detailed description
+
+<!--
+Describe the issue in detail, including how to reproduce it.
+If appropriate, please include error messages and screenshots.
+-->
