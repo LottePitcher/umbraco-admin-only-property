@@ -10,7 +10,7 @@
     <PackageId>Our.Umbraco.Community.AdminOnlyProperty</PackageId>
     <Title>Admin Only Property for Umbraco</Title>
     <Version>1.1.1</Version>
-    <Authors>lottepitcher</Authors>
+    <Authors>Lotte Pitcher</Authors>
     <Product>Umbraco.Community.AdminOnlyProperty</Product>
     <Description>Restrict a property on a document type by user group(s). If the editor is unauthorised the property will not be shown.</Description>
     <Copyright>2022 © Lotte Pitcher</Copyright>

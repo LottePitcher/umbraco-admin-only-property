@@ -1,27 +1,28 @@
 {
   "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
   "AuthorDetails": {
-      "Description": "6 x Umbraco MVP and member of the Umbraco Community Package team.",
-      "Url": "https://lotte.dev",
-      "ImageUrl": "https://github.com/lottepitcher.png"
+    "Description": "6 x Umbraco MVP and member of the Umbraco Community Package team.",
+    "Url": "https://lotte.dev",
+    "ImageUrl": "https://github.com/lottepitcher.png",
+    "Contributors": []
+  },
+  "Category": "Editor Tools",
+  "IssueTrackerUrl": "https://github.com/LottePitcher/umbraco-admin-only-property/issues",
+  "LicenseTypes": [ "Free" ],
+  "PackageType": "Package",
+  "Screenshots": [
+    {
+      "ImageUrl": "https://github.com/LottePitcher/umbraco-admin-only-property/raw/develop/docs/screenshots/data-type-config.png",
+      "Caption": "Configuring an 'Admin Only Property' data type in the backoffice"
     },
-    "Category": "Editor Tools",
-    "IssueTrackerUrl": "https://github.com/LottePitcher/umbraco-admin-only-property/issues",
-    "LicenseTypes": [ "Free" ],
-    "PackageType": "Package",
-    "Screenshots": [
-      {
-        "ImageUrl": "https://github.com/LottePitcher/umbraco-admin-only-property/raw/develop/docs/screenshots/data-type-config.png",
-        "Caption": "Configuring an 'Admin Only Property' data type in the backoffice"
-      },
-      {
-        "ImageUrl": "https://github.com/LottePitcher/umbraco-admin-only-property/raw/develop/docs/screenshots/indicator-textarea.png",
-        "Caption": "Optional indicator confirming that the textarea property is hidden from some users"
-      }
-    ],
-    "Tags": [
-      "backoffice",
-      "property editor"
-    ],
-    "Title": "Admin Only Property Editor"
-  }
+    {
+      "ImageUrl": "https://github.com/LottePitcher/umbraco-admin-only-property/raw/develop/docs/screenshots/indicator-textarea.png",
+      "Caption": "Optional indicator confirming that the textarea property is hidden from some users"
+    }
+  ],
+  "Tags": [
+    "backoffice",
+    "property editor"
+  ],
+  "Title": "Admin Only Property Editor"
+}
