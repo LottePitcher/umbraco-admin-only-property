@@ -5,7 +5,7 @@ body:
 - type: markdown
   attributes:
     value: |
-      Thanks for taking the time to report this issue as thoroughly as possible
+      Thanks for taking the time to report this issue as thoroughly as possible.
 - type: input
   id: "AdminOnlyPropertyVersion"
   attributes:
