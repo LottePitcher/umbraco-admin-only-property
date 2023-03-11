@@ -2,7 +2,7 @@
 
 [![Downloads](https://img.shields.io/nuget/dt/Our.Umbraco.Community.AdminOnlyProperty?color=cc9900)](https://www.nuget.org/packages/Our.Umbraco.Community.AdminOnlyProperty/)
 [![NuGet](https://img.shields.io/nuget/vpre/Our.Umbraco.Community.AdminOnlyProperty?color=0273B3)](https://www.nuget.org/packages/Our.Umbraco.Community.AdminOnlyProperty)
-[![GitHub license](https://img.shields.io/github/license/lottepitcher/umbraco-admin-only-property?color=8AB803)](LICENSE)
+[![GitHub license](https://img.shields.io/github/license/lottepitcher/umbraco-admin-only-property?color=8AB803)](../LICENSE)
 
 This package adds a new data type 'wrapper' to the Umbraco backoffice that allows you to hide a document type property from any user that is not in the specified user group(s).
 
