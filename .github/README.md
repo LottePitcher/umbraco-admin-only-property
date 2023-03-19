@@ -26,6 +26,11 @@ If you would like authorised content editors to see an indicator that the proper
 
 <img width="750" alt="Document type indicator" src="https://github.com/LottePitcher/umbraco-admin-only-property/blob/develop/docs/screenshots/indicator-textstring.png">
 
+## Known Issues
+
+The package does not currently support being used to 'wrap' the following data types:
+- Block list (see issue #14)
+
 ## Contributing
 
 Contributions to this package are most welcome! Please read the [Contributing Guidelines](CONTRIBUTING.md).
