@@ -29,7 +29,7 @@ If you would like authorised content editors to see an indicator that the proper
 ## Known Issues
 
 The package does not currently support being used to 'wrap' the following data types:
-- Block list (see issue #14)
+- Block list - see issue [#19](../issues/19)
 
 ## Contributing
 
