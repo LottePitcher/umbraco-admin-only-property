@@ -71,6 +71,26 @@ namespace Umbraco.Community.AdminOnlyProperty
                             tab.Type = string.Empty;
                         }
                     }
+
+                    // if a Tab has only Groups and all the properties in those Groups
+                    // are now hidden we should hide the Tab too
+                    foreach (var tab in variant.Tabs.Where(t => t.Type == "Tab"))
+                    {
+                        if (tab?.Properties?.Any() == true)
+                        {
+                            continue;
+                        }
+
+                        // Groups in this Tab will have aliases that start with this Tab's alias/
+                        if (variant.Tabs.Any(t => t.Type == "Group" && t.Alias?.StartsWith(tab?.Alias + "/") == true) == true)
+                        {
+                            continue;
+                        }
+
+                        // this Tab must have no properties, and no groups to show
+                        // so set Type as Empty so doesn't display
+                        tab.Type = string.Empty;
+                    }
                 }
             }
         }
