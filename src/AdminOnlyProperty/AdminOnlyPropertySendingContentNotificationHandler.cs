@@ -23,9 +23,17 @@ namespace Umbraco.Community.AdminOnlyProperty
             {
                 foreach (var variant in notification.Content.Variants)
                 {
+                    // 'Tabs' property actually contains both 'Tabs' and 'Groups'
                     foreach (var tab in variant.Tabs)
                     {
-                        tab.Properties = tab?.Properties?.Where(prop =>
+                        // Tabs might have only Groups, no properties themselves
+                        if (tab?.Properties == null || tab.Properties.Any() == false)
+                        {
+                            continue;
+                        }
+
+                        // remove any Admin Only properties for which the user does not have the appropriate access
+                        tab.Properties = tab.Properties.Where(prop =>
                         {
                             var cacheKey = $"__aopConfig";
                             if (prop?.PropertyEditor?.Alias.InvariantEquals(AdminOnlyPropertyDataEditor.DataEditorAlias) == true &&
@@ -57,8 +65,9 @@ namespace Umbraco.Community.AdminOnlyProperty
 
                         }).ToList();
 
-                        if (tab?.Properties?.Any() == false)
+                        if (tab.Properties.Any() == false)
                         {
+                            // set Type as Empty so doesn't display
                             tab.Type = string.Empty;
                         }
                     }
