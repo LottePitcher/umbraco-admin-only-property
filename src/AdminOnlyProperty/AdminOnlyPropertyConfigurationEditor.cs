@@ -14,10 +14,13 @@ namespace Umbraco.Community.AdminOnlyProperty
         private readonly IDataTypeService _dataTypeService;
         private readonly PropertyEditorCollection _propertyEditors;
 
-        internal readonly string[] _defaultUserGroups = new[] { "admin" };
-        internal const string UserGroupsKey = "userGroups";
+        private readonly string[] _defaultUserGroups = new[] { "admin" };
+
+        private const string LocalizationAreaKey = "adminOnlyProperty";
+
         internal const string DataTypeKey = "dataType";
         internal const string IndicatorKey = "indicator";
+        internal const string UserGroupsKey = "userGroups";
 
         public AdminOnlyPropertyConfigurationEditor(
             IDataTypeService dataTypeService,
@@ -43,8 +46,8 @@ namespace Umbraco.Community.AdminOnlyProperty
             Fields.Add(new ConfigurationField
             {
                 Key = UserGroupsKey,
-                Name = localizedTextService.Localize("adminOnlyProperty", "labelUserGroups") ?? "User groups",
-                Description = localizedTextService.Localize("adminOnlyProperty", "descriptionUserGroups") ?? "Select as many user groups as you like!",
+                Name = localizedTextService.Localize(LocalizationAreaKey, "labelUserGroups") ?? "User groups",
+                Description = localizedTextService.Localize(LocalizationAreaKey, "descriptionUserGroups") ?? "Select as many user groups as you like!",
                 View = "checkboxlist",
                 Config = new Dictionary<string, object>
                 {
@@ -55,8 +58,8 @@ namespace Umbraco.Community.AdminOnlyProperty
             Fields.Add(new ConfigurationField
             {
                 Key = DataTypeKey,
-                Name = localizedTextService.Localize("adminOnlyProperty", "labelDataType") ?? "Data type",
-                Description = localizedTextService.Localize("adminOnlyProperty", "descriptionDataType") ?? "The data type to wrap",
+                Name = localizedTextService.Localize(LocalizationAreaKey, "labelDataType") ?? "Data type",
+                Description = localizedTextService.Localize(LocalizationAreaKey, "descriptionDataType") ?? "The data type to wrap",
                 View = "treepicker",
                 Config = new Dictionary<string, object>
                 {
@@ -71,8 +74,8 @@ namespace Umbraco.Community.AdminOnlyProperty
             Fields.Add(new ConfigurationField
             {
                 Key = IndicatorKey,
-                Name = localizedTextService.Localize("adminOnlyProperty", "labelIndicator") ?? "Show indicator?",
-                Description = localizedTextService.Localize("adminOnlyProperty", "descriptionIndicator") ?? "Add '🔓' to the label to indicate the property is restricted to some users",
+                Name = localizedTextService.Localize(LocalizationAreaKey, "labelIndicator") ?? "Show indicator?",
+                Description = localizedTextService.Localize(LocalizationAreaKey, "descriptionIndicator") ?? "Add '🔓' to the label to indicate the property is restricted to some users",
                 View = "boolean"
             });
         }
