@@ -23,9 +23,36 @@ namespace Umbraco.Community.AdminOnlyProperty
             {
                 foreach (var variant in notification.Content.Variants)
                 {
+                    var tabGroupCount = new Dictionary<string, int>();
+
                     // 'Tabs' property actually contains both 'Tabs' and 'Groups'
                     foreach (var tab in variant.Tabs)
                     {
+                        // Keeps a count of the groups with tabs
+                        if (string.IsNullOrWhiteSpace(tab.Alias) == false)
+                        {
+                            if (tab.Type.InvariantEquals("Tab") == true)
+                            {
+                                tabGroupCount.TryAdd(tab.Alias, 0);
+                            }
+                            else if (tab.Type.InvariantEquals("Group") == true)
+                            {
+                                var idx = tab.Alias.LastIndexOf('/');
+                                if (idx > 0)
+                                {
+                                    var tabAlias = tab.Alias.Substring(0, idx);
+                                    if (tabGroupCount.ContainsKey(tabAlias) == false)
+                                    {
+                                        tabGroupCount.Add(tabAlias, 1);
+                                    }
+                                    else
+                                    {
+                                        tabGroupCount[tabAlias]++;
+                                    }
+                                }
+                            }
+                        }
+
                         // Tabs might have only Groups, no properties themselves
                         if (tab?.Properties == null || tab.Properties.Any() == false)
                         {
@@ -67,8 +94,41 @@ namespace Umbraco.Community.AdminOnlyProperty
 
                         if (tab.Properties.Any() == false)
                         {
+                            // Decrement the group count for the tab
+                            if (string.IsNullOrWhiteSpace(tab.Alias) == false &&
+                                tab.Type.InvariantEquals("Group") == true)
+                            {
+                                var idx = tab.Alias.LastIndexOf('/');
+                                if (idx > 0)
+                                {
+                                    var tabAlias = tab.Alias?.Substring(0, idx) ?? string.Empty;
+                                    if (tabGroupCount.ContainsKey(tabAlias) == true)
+                                    {
+                                        tabGroupCount[tabAlias]--;
+                                    }
+                                }
+                            }
+
                             // set Type as Empty so doesn't display
                             tab.Type = string.Empty;
+                        }
+                    }
+
+                    if (tabGroupCount.Count > 0)
+                    {
+                        // if a Tab has only Groups and all the properties in those Groups
+                        // are now hidden we should hide the Tab too
+                        foreach (var tab in variant.Tabs)
+                        {
+                            // this Tab must have no properties, and no groups to show
+                            // so set Type as Empty so doesn't display
+                            if (tab?.Properties?.Any() == false &&
+                                string.IsNullOrWhiteSpace(tab.Alias) == false &&
+                                tabGroupCount.TryGetValue(tab.Alias, out var groupCount) == true &&
+                                groupCount == 0)
+                            {
+                                tab.Type = string.Empty;
+                            }
                         }
                     }
                 }
