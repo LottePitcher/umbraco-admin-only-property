@@ -1,4 +1,3 @@
-using Umbraco.Cms.Core;
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Core.PropertyEditors;
@@ -40,22 +39,9 @@ namespace Umbraco.Community.AdminOnlyProperty
 
         private IPublishedPropertyType GetInnerPropertyType(IPublishedPropertyType propertyType)
         {
-            if (propertyType.ContentType != null &&
-                propertyType.DataType.Configuration is Dictionary<string, object> config &&
-                config?.TryGetValue(AdminOnlyPropertyConfigurationEditor.DataTypeKey, out var tmp1) == true &&
-                tmp1 is string str1)
+            if (propertyType is { ContentType: not null, DataType.Configuration: Dictionary<string, object> config })
             {
-                var dataType = default(IDataType);
-
-                if (int.TryParse(str1, out var id) == true)
-                {
-                    dataType = _dataTypeService.GetDataType(id);
-                }
-                else if (UdiParser.TryParse<GuidUdi>(str1, out var udi) == true)
-                {
-                    dataType = _dataTypeService.GetDataType(udi.Guid);
-                }
-
+                var dataType = AdminOnlyPropertyHelpers.GetInnerDataType(_dataTypeService, config);
                 if (dataType?.EditorAlias.InvariantEquals(AdminOnlyPropertyDataEditor.DataEditorAlias) == false)
                 {
                     return _publishedContentTypeFactory.CreatePropertyType(

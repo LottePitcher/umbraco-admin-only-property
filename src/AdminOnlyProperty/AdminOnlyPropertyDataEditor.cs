@@ -1,4 +1,3 @@
-using Umbraco.Cms.Core;
 using Umbraco.Cms.Core.IO;
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.PropertyEditors;
@@ -82,21 +81,9 @@ namespace Umbraco.Community.AdminOnlyProperty
 
         public IDataValueEditor GetValueEditor(object? configuration)
         {
-            if (configuration is Dictionary<string, object> config &&
-                config.TryGetValue(AdminOnlyPropertyConfigurationEditor.DataTypeKey, out var obj1) == true &&
-                obj1 is string str1)
+            if (configuration is Dictionary<string, object> config)
             {
-                var dataType = default(IDataType);
-
-                if (int.TryParse(str1, out var id) == true)
-                {
-                    dataType = _dataTypeService.GetDataType(id);
-                }
-                else if (UdiParser.TryParse<GuidUdi>(str1, out var udi) == true)
-                {
-                    dataType = _dataTypeService.GetDataType(udi.Guid);
-                }
-
+                var dataType = AdminOnlyPropertyHelpers.GetInnerDataType(_dataTypeService, config);
                 if (dataType != null && _propertyEditors.TryGet(dataType.EditorAlias, out var dataEditor) == true)
                 {
                     return dataEditor.GetValueEditor(dataType.Configuration);
