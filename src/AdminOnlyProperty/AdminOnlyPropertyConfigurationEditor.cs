@@ -1,11 +1,11 @@
+using Newtonsoft.Json.Linq;
 using Umbraco.Cms.Core;
-using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.IO;
+using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Cms.Core.Services;
 using Umbraco.Extensions;
 using UmbConstants = Umbraco.Cms.Core.Constants;
-using Newtonsoft.Json.Linq;
 
 namespace Umbraco.Community.AdminOnlyProperty
 {
@@ -82,28 +82,14 @@ namespace Umbraco.Community.AdminOnlyProperty
 
         public override IDictionary<string, object> ToValueEditor(object? configuration)
         {
-            if (configuration is Dictionary<string, object> config && 
-                config.TryGetValue(DataTypeKey, out var obj1) == true &&
-                obj1 is string str1)
+            if (configuration is Dictionary<string, object> config)
             {
                 if (config.ContainsKey(UserGroupsKey) == false)
                 {
                     config.Add(UserGroupsKey, JArray.FromObject(_defaultUserGroups));
                 }
 
-                var dataType = default(IDataType);
-
-                // NOTE: For backwards-compatibility, the value could either be an `int` or `Udi`.
-                // However the `_dataTypeService.GetDataType` doesn't accept a `Udi`, so we'll use the `Guid`.
-                if (int.TryParse(str1, out var id) == true)
-                {
-                    dataType = _dataTypeService.GetDataType(id);
-                }
-                else if (UdiParser.TryParse<GuidUdi>(str1, out var udi) == true)
-                {
-                    dataType = _dataTypeService.GetDataType(udi.Guid);
-                }
-
+                var dataType = _dataTypeService.GetDataTypeFromConfig(config);
                 if (dataType != null && _propertyEditors.TryGet(dataType.EditorAlias, out var dataEditor) == true)
                 {
                     var cacheKey = $"__aopConfig";

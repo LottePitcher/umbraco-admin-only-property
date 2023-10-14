@@ -2,6 +2,7 @@ using Newtonsoft.Json.Linq;
 using Umbraco.Cms.Core.Events;
 using Umbraco.Cms.Core.Notifications;
 using Umbraco.Cms.Core.Security;
+using Umbraco.Cms.Core.Services;
 using Umbraco.Extensions;
 
 namespace Umbraco.Community.AdminOnlyProperty
@@ -10,10 +11,14 @@ namespace Umbraco.Community.AdminOnlyProperty
         : INotificationHandler<SendingContentNotification>
     {
         private readonly IBackOfficeSecurityAccessor _backOfficeSecurityAccessor;
+        private readonly IDataTypeService _dataTypeService;
 
-        public AdminOnlyPropertySendingContentNotificationHandler(IBackOfficeSecurityAccessor backOfficeSecurityAccessor)
+        public AdminOnlyPropertySendingContentNotificationHandler(
+            IBackOfficeSecurityAccessor backOfficeSecurityAccessor,
+            IDataTypeService dataTypeService)
         {
             _backOfficeSecurityAccessor = backOfficeSecurityAccessor;
+            _dataTypeService = dataTypeService;
         }
 
         public void Handle(SendingContentNotification notification)
@@ -84,12 +89,14 @@ namespace Umbraco.Community.AdminOnlyProperty
                                     {
                                         prop.Label = "🔓 " + prop.Label;
                                     }
+
+                                    // set the editor to the inner one since Umbraco uses this for the block list layout, and it must match
+                                    prop.Editor = _dataTypeService.GetDataTypeFromConfig(config)?.EditorAlias ?? prop.Editor;
                                 }
+
                                 return allowed;
                             }
-
                             return true;
-
                         }).ToList();
 
                         if (tab.Properties.Any() == false)
