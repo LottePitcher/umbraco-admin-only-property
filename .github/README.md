@@ -22,7 +22,7 @@ In the following example a textstring property will only be visible to (and ther
 
 <img width="750" alt="Data type config" src="https://github.com/LottePitcher/umbraco-admin-only-property/blob/develop/docs/screenshots/data-type-config.png">
 
-If you would like authorised content editors to see an indicator that the property is hidden from some users then tick 'Show indicator?'. When this is ticked an unlocked padlock emoji will be displayed alongside the label, for example:
+If you would like authorised content editors to see an indicator that the property is hidden from some users then tick 'Show indicator?'. When this is ticked, a locked padlock emoji will be displayed alongside the label, for example:
 
 <img width="750" alt="Document type indicator" src="https://github.com/LottePitcher/umbraco-admin-only-property/blob/develop/docs/screenshots/indicator-textstring.png">
 
