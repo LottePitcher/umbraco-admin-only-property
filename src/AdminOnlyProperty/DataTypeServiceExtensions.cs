@@ -4,9 +4,9 @@ using Umbraco.Cms.Core.Services;
 
 namespace Umbraco.Community.AdminOnlyProperty
 {
-    internal static class AdminOnlyPropertyHelpers
+    internal static class DataTypeServiceExtensions
     {
-        public static IDataType? GetInnerDataType(IDataTypeService dataTypeService, Dictionary<string, object> config)
+        public static IDataType? GetDataTypeFromConfig(this IDataTypeService dataTypeService, Dictionary<string, object> config)
         {
             if (!config.TryGetValue(AdminOnlyPropertyConfigurationEditor.DataTypeKey, out var dataTypeKeyObj)
                 || dataTypeKeyObj is not string dataTypeKey)

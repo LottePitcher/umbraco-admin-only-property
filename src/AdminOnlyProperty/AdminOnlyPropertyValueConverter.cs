@@ -41,7 +41,7 @@ namespace Umbraco.Community.AdminOnlyProperty
         {
             if (propertyType is { ContentType: not null, DataType.Configuration: Dictionary<string, object> config })
             {
-                var dataType = AdminOnlyPropertyHelpers.GetInnerDataType(_dataTypeService, config);
+                var dataType = _dataTypeService.GetDataTypeFromConfig(config);
                 if (dataType?.EditorAlias.InvariantEquals(AdminOnlyPropertyDataEditor.DataEditorAlias) == false)
                 {
                     return _publishedContentTypeFactory.CreatePropertyType(

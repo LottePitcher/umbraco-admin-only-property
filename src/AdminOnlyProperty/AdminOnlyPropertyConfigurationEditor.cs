@@ -89,7 +89,7 @@ namespace Umbraco.Community.AdminOnlyProperty
                     config.Add(UserGroupsKey, JArray.FromObject(_defaultUserGroups));
                 }
 
-                var dataType = AdminOnlyPropertyHelpers.GetInnerDataType(_dataTypeService, config);
+                var dataType = _dataTypeService.GetDataTypeFromConfig(config);
                 if (dataType != null && _propertyEditors.TryGet(dataType.EditorAlias, out var dataEditor) == true)
                 {
                     var cacheKey = $"__aopConfig";

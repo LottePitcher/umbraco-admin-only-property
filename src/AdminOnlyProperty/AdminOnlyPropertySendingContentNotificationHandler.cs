@@ -91,7 +91,7 @@ namespace Umbraco.Community.AdminOnlyProperty
                                     }
 
                                     // set the editor to the inner one since Umbraco uses this for the block list layout, and it must match
-                                    prop.Editor = AdminOnlyPropertyHelpers.GetInnerDataType(_dataTypeService, config)?.EditorAlias ?? prop.Editor;
+                                    prop.Editor = _dataTypeService.GetDataTypeFromConfig(config)?.EditorAlias ?? prop.Editor;
                                 }
 
                                 return allowed;
