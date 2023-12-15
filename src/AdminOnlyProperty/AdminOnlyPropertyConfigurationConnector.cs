@@ -9,12 +9,14 @@ namespace Umbraco.Community.AdminOnlyProperty
     internal sealed class AdminOnlyPropertyConfigurationConnector : IDataTypeConfigurationConnector
     {
         private readonly IConfigurationEditorJsonSerializer _configurationEditorJsonSerializer;
-        
+
+#if NET8_0
+
         public string? ToArtifact(IDataType dataType, ICollection<ArtifactDependency> dependencies, IContextCache contextCache)
         {
             return ToArtifact(dataType, dependencies);
         }
-
+#endif
         public string? ToArtifact(IDataType dataType, ICollection<ArtifactDependency> dependencies)
         {
             if (dataType.Configuration is Dictionary<string, object> config &&
@@ -27,12 +29,13 @@ namespace Umbraco.Community.AdminOnlyProperty
 
             return ConfigurationEditor.ToDatabase(dataType.Configuration, _configurationEditorJsonSerializer);
         }
-        
+
+#if NET8_0
         public object? FromArtifact(IDataType dataType, string? configuration, IContextCache contextCache)
         {
             return FromArtifact(dataType, configuration);
         }
-
+#endif
         public object? FromArtifact(IDataType dataType, string? configuration)
         {
             var dataTypeConfigurationEditor = dataType.Editor?.GetConfigurationEditor();
