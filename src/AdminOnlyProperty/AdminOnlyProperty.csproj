@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <StaticWebAssetBasePath>/</StaticWebAssetBasePath>
@@ -35,8 +35,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Umbraco.Cms.Core" Version="10.2.0" />
-    <PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="10.2.0" />
+    <PackageReference Include="Umbraco.Cms.Core" Version="13.0.1" />
+    <PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="13.0.1" />
   </ItemGroup>
 
 </Project>
