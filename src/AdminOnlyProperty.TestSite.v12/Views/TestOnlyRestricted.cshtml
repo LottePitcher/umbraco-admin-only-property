@@ -1,0 +1,49 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.TestOnlyRestricted>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = null;
+}
+
+<style type="text/css">
+    table td {
+        padding: 10px 5px;
+        vertical-align: top;
+        border-top: solid 1px gray;
+    }
+</style>
+
+<h1>Test - Only Restricted Page</h1>
+
+<table>
+    <tr>
+        <td>Textstring (Admin)</td>
+        <td>@Model.Textstring</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Textarea (Admin)</td>
+        <td>@Model.Textarea</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Numeric (Admin)</td>
+        <td>@Model.Numeric</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>True/False (Admin)</td>
+        <td>@Model.TrueFalse</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Block List (Admin)</td>
+        <td>@Html.GetBlockListHtml(Model.BlockList)</td>
+        <td><b>BUG!</b> <i>The contents of this property is incorrectly empty</i></td>
+    </tr>
+    <tr>
+        <td>Indicator (Admin)</td>
+        <td>@Model.Indicator</td>
+        <td>&nbsp;</td>
+    </tr>
+</table>

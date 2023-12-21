@@ -1,0 +1,10 @@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var content = (ContentModels.BlockListElement2)Model.Content;
+    var settings = (ContentModels.BlockListElement2)Model.Settings;
+}
+
+<p>
+    Textstring: <b>@content.Textstring</b> | Numeric: <b>@content.Numeric</b>
+</p>
