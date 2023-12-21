@@ -1,7 +1,7 @@
 ﻿using Umbraco.Cms.Core.Composing;
 using Umbraco.Cms.Core.Notifications;
 
-namespace AdminOnlyProperty.TestSite.UserImport;
+namespace AdminOnlyProperty.TestSite.v10.UserImport;
 
 public class Composer : IComposer
 {

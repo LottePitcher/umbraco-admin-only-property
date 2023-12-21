@@ -1,4 +1,4 @@
-namespace AdminOnlyProperty.TestSite
+namespace AdminOnlyProperty.TestSite.v10
 {
     public class Program
     {

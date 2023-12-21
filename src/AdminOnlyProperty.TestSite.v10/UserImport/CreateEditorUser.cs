@@ -6,7 +6,7 @@ using Umbraco.Cms.Core.Models.Membership;
 using Umbraco.Cms.Core.Notifications;
 using Umbraco.Cms.Core.Services;
 
-namespace AdminOnlyProperty.TestSite.UserImport;
+namespace AdminOnlyProperty.TestSite.v10.UserImport;
 
 public class CreateEditorUser : INotificationHandler<UmbracoApplicationStartedNotification>
 {
