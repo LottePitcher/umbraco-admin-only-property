@@ -10,19 +10,13 @@ namespace Umbraco.Community.AdminOnlyProperty
     {
         private readonly IConfigurationEditorJsonSerializer _configurationEditorJsonSerializer;
 
-        public IEnumerable<string> PropertyEditorAliases => new[] { AdminOnlyPropertyDataEditor.DataEditorAlias };
+#if NET8_0
 
-        public AdminOnlyPropertyConfigurationConnector(IConfigurationEditorJsonSerializer configurationEditorJsonSerializer)
+        public string? ToArtifact(IDataType dataType, ICollection<ArtifactDependency> dependencies, IContextCache contextCache)
         {
-            _configurationEditorJsonSerializer = configurationEditorJsonSerializer;
+            return ToArtifact(dataType, dependencies);
         }
-
-        public object? FromArtifact(IDataType dataType, string? configuration)
-        {
-            var dataTypeConfigurationEditor = dataType.Editor?.GetConfigurationEditor();
-            return dataTypeConfigurationEditor?.FromDatabase(configuration, _configurationEditorJsonSerializer);
-        }
-
+#endif
         public string? ToArtifact(IDataType dataType, ICollection<ArtifactDependency> dependencies)
         {
             if (dataType.Configuration is Dictionary<string, object> config &&
@@ -34,6 +28,25 @@ namespace Umbraco.Community.AdminOnlyProperty
             }
 
             return ConfigurationEditor.ToDatabase(dataType.Configuration, _configurationEditorJsonSerializer);
+        }
+
+#if NET8_0
+        public object? FromArtifact(IDataType dataType, string? configuration, IContextCache contextCache)
+        {
+            return FromArtifact(dataType, configuration);
+        }
+#endif
+        public object? FromArtifact(IDataType dataType, string? configuration)
+        {
+            var dataTypeConfigurationEditor = dataType.Editor?.GetConfigurationEditor();
+            return dataTypeConfigurationEditor?.FromDatabase(configuration, _configurationEditorJsonSerializer);
+        }
+
+        public IEnumerable<string> PropertyEditorAliases => new[] { AdminOnlyPropertyDataEditor.DataEditorAlias };
+
+        public AdminOnlyPropertyConfigurationConnector(IConfigurationEditorJsonSerializer configurationEditorJsonSerializer)
+        {
+            _configurationEditorJsonSerializer = configurationEditorJsonSerializer;
         }
     }
 }
