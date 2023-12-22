@@ -1,9 +1,3 @@
-# NOTE FOR PR:
-This is a fork for Umbraco 13.0.1 and .net 8 support.
-It was missing implementation of members from Umbraco.Cms.Core.Deploy.IDataTypeConfigurationConnector - Umbraco has added IContextCache contextCache.
-This implementation simply reroute the calls to the existing methods - not implementing the cache layer.
-
-
 # Admin Only Property Editor for Umbraco
 
 [![Downloads](https://img.shields.io/nuget/dt/Our.Umbraco.Community.AdminOnlyProperty?color=cc9900)](https://www.nuget.org/packages/Our.Umbraco.Community.AdminOnlyProperty/)
