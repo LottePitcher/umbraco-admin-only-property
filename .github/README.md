@@ -8,6 +8,9 @@ This package adds a new data type 'wrapper' to the Umbraco backoffice that allow
 
 Umbraco versions supported: v10.2+, v11.x, v12.x and v13.x
 
+> [!NOTE]
+> This functionality is now possible using the [Property Level UI Permissions](https://docs.umbraco.com/umbraco-cms/customizing/property-level-ui-permissions) feature that was introduced in Umbraco 16. If the out-of-the-box feature doesn't suit your needs, then see if [this Skrift article](https://skrift.io/issues/admin-only-property-using-granular-permissions-in-umbraco-17/) gives you some inspiration on how to extend it.
+
 ## Installation
 
 Add the package to an existing Umbraco website from nuget:
