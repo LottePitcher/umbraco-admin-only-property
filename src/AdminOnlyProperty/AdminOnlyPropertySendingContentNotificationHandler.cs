@@ -67,9 +67,9 @@ namespace Umbraco.Community.AdminOnlyProperty
                         // remove any Admin Only properties for which the user does not have the appropriate access
                         tab.Properties = tab.Properties.Where(prop =>
                         {
-                            var cacheKey = $"__aopConfig";
+                            var cacheKey = "__aopConfig";
                             if (prop?.PropertyEditor?.Alias.InvariantEquals(AdminOnlyPropertyDataEditor.DataEditorAlias) == true &&
-                                prop?.ConfigNullable.TryGetValue(cacheKey, out var tmp1) == true &&
+                                prop?.ConfigNullable?.TryGetValue(cacheKey, out var tmp1) == true &&
                                 tmp1 is Dictionary<string, object> config &&
                                 config.TryGetValue(AdminOnlyPropertyConfigurationEditor.UserGroupsKey, out var tmp2) == true &&
                                 tmp2 is JArray array1 &&
@@ -90,8 +90,22 @@ namespace Umbraco.Community.AdminOnlyProperty
                                         prop.Label = "🔓 " + prop.Label;
                                     }
 
-                                    // set the editor to the inner one since Umbraco uses this for the block list layout, and it must match
-                                    prop.Editor = _dataTypeService.GetDataTypeFromConfig(config)?.EditorAlias ?? prop.Editor;
+                                    var dataType = _dataTypeService.GetDataTypeFromConfig(config);
+                                    if (dataType is not null)
+                                    {
+                                        // set the property's data-type key to the target data-type,
+                                        // as some 3rd party packages require this, e.g. Contentment's Data Picker.
+                                        if (dataType.Key != Guid.Empty)
+                                        {
+                                            prop.DataTypeKey = dataType.Key;
+                                        }
+
+                                        // set the editor to the inner one since Umbraco uses this for the block list layout, and it must match
+                                        if (string.IsNullOrWhiteSpace(dataType.EditorAlias) == false)
+                                        {
+                                            prop.Editor = dataType.EditorAlias;
+                                        }
+                                    }
                                 }
 
                                 return allowed;
